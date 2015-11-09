@@ -23,15 +23,19 @@ services:
         class: AppBundle\Game\WordList
         #lazy: true
         public: false
-        calls:
-            - [ addLoader, [ txt, '@app.text_file_loader' ] ]
-            - [ addLoader, [ xml, '@app.xml_file_loader' ] ]
-            #- [ loadDictionaries, [ '%dictionaries%' ] ]
+#        calls:
+#            - [ addLoader, [ txt, '@app.text_file_loader' ] ]
+#            - [ addLoader, [ xml, '@app.xml_file_loader' ] ]
+#            - [ loadDictionaries, [ '%dictionaries%' ] ]
 
     app.text_file_loader:
         class: AppBundle\Game\Loader\TextFileLoader
         public: false
+        tags:
+            - { name: hangman.dictionary_loader, type: txt }
 
     app.xml_file_loader:
         class: AppBundle\Game\Loader\XmlFileLoader
         public: false
+        tags:
+            - { name: hangman.dictionary_loader, type: xml }
