@@ -1,4 +1,9 @@
 services:
+    app.language_detector:
+        class: AppBundle\Http\AcceptLanguageDetector
+        tags:
+            - { name: kernel.event_subscriber }
+
     app.contact:
         class: AppBundle\Service\ContactService
         arguments: [ '@mailer' ]
@@ -12,7 +17,11 @@ services:
 
     app.game_runner:
         class: AppBundle\Game\GameRunner
-        arguments: [ '@app.game_context', '@?app.word_list', '%dictionaries%' ]
+        arguments:
+            - '@app.game_context'
+            - '@?event_dispatcher'
+            - '@?app.word_list'
+            - '%dictionaries%'
 
     app.game_context:
         class: AppBundle\Game\GameContext
