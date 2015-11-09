@@ -12,7 +12,7 @@ services:
 
     app.game_runner:
         class: AppBundle\Game\GameRunner
-        arguments: [ '@app.game_context', '@?app.word_list' ]
+        arguments: [ '@app.game_context', '@?app.word_list', '%dictionaries%' ]
 
     app.game_context:
         class: AppBundle\Game\GameContext
@@ -21,15 +21,12 @@ services:
 
     app.word_list:
         class: AppBundle\Game\WordList
-        lazy: true
+        #lazy: true
         public: false
         calls:
             - [ addLoader, [ txt, '@app.text_file_loader' ] ]
             - [ addLoader, [ xml, '@app.xml_file_loader' ] ]
-#            - [ addWord, [ papillon ] ]
-#            - [ addWord, [ chemises ] ]
-#            - [ addWord, [ journaux ] ]
-            - [ loadDictionaries, [ '%dictionaries%' ] ]
+            #- [ loadDictionaries, [ '%dictionaries%' ] ]
 
     app.text_file_loader:
         class: AppBundle\Game\Loader\TextFileLoader

@@ -20,6 +20,8 @@ class GameRunner
      */
     private $wordList;
 
+    private $dictionaries;
+
     /**
      * Constructor.
      *
@@ -28,11 +30,13 @@ class GameRunner
      */
     public function __construct(
         GameContextInterface $context,
-        WordListInterface $wordList = null
+        WordListInterface $wordList = null,
+        array $dictionaries = []
     )
     {
         $this->context = $context;
         $this->wordList = $wordList;
+        $this->dictionaries = $dictionaries;
     }
 
     /**
@@ -51,6 +55,8 @@ class GameRunner
         if (!$this->wordList) {
             throw new \RuntimeException('A WordListInterface instance must be set.');
         }
+
+        $this->wordList->loadDictionaries($this->dictionaries);
 
         $word = $this->wordList->getRandomWord($length);
         $game = $this->context->newGame($word);
