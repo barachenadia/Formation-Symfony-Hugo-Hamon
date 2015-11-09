@@ -6,6 +6,10 @@ imports:
 #        class: My\FooBar\GameContext
 #        arguments: [ '@doctrine' ]
 
+app:
+    dictionaries:
+        - '%kernel.root_dir%/Resources/data/words.txt'
+
 framework:
     router:
         resource: "%kernel.root_dir%/config/routing_dev.yml"

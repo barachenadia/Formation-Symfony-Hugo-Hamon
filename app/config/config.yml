@@ -7,10 +7,14 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    contact_recipient: somebody@domain.tld
+
+app:
+    word_length: 8
+    difficulty: medium # easy, medium, hard
     dictionaries:
         - '%kernel.root_dir%/Resources/data/words.txt'
         - '%kernel.root_dir%/Resources/data/words.xml'
-    contact_recipient: somebody@domain.tld
 
 framework:
     esi:             ~
