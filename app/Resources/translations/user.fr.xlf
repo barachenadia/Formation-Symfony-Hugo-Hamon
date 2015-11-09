@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="77a206252395f65c34547443b528deee" resname="signup.title">
+        <source>signup.title</source>
+        <target>Se créer un compte</target>
+      </trans-unit>
+      <trans-unit id="8d18eb01d6a42d630c2f7cbef70862d7" resname="signup.subtitle">
+        <source>signup.subtitle</source>
+        <target>Inscription gratuite</target>
+      </trans-unit>
+      <trans-unit id="1db5bba72bdbd9a1548931d5a179b355" resname="signup.form.subit">
+        <source>signup.form.subit</source>
+        <target>Envoyer</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

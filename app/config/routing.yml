@@ -1,0 +1,10 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+#    prefix:   /{_locale}
+#    requirements: { _locale: en|fr|de }
+
+homepage:
+    path: /
+    defaults: { _controller: AppBundle:Security:login }
+    methods: GET

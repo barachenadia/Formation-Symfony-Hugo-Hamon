@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% trans_default_domain 'game' %}
+
+{% block title 'lose.title'|trans %}
+
+{% block subtitle 'lose.subtitle'|trans %}
+
+{% block body %}
+
+    <p>
+        {% trans with {
+            '%word%': "<strong>#{game.word}</strong>",
+            '%score%': 0
+        } %}
+            lose.message
+        {% endtrans %}
+    </p>
+
+{% endblock %}

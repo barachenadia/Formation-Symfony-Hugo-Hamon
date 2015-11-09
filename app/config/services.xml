@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        
+        <service id="app.game_runner" class="AppBundle\Game\GameRunner">
+            <argument type="service" id="app.game_context"/>
+            <argument type="service" id="app.word_list" on-invalid="ignore"/>
+        </service>
+
+        <service id="app.game_context" class="AppBundle\Game\GameContext" public="false">
+            <argument type="service" id="session"/>
+        </service>
+
+        <service id="app.word_list" class="AppBundle\Game\WordList" public="false">
+            <call method="addLoader">
+                <argument>txt</argument>
+                <argument type="service">
+                    <service class="AppBundle\Game\Loader\TextFileLoader"/>
+                </argument>
+            </call>
+            <call method="addLoader">
+                <argument>xml</argument>
+                <argument type="service">
+                    <service class="AppBundle\Game\Loader\XmlFileLoader"/>
+                </argument>
+            </call>
+            <call method="addWord">
+                <argument>papillon</argument>
+            </call>
+            <call method="addWord">
+                <argument>chemises</argument>
+            </call>
+            <call method="addWord">
+                <argument>journaux</argument>
+            </call>
+        </service>
+
+    </services>
+</container>

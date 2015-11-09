@@ -1,0 +1,45 @@
+security:
+
+    role_hierarchy:
+        ROLE_PLAYER_PREMIUM: ROLE_PLAYER
+        ROLE_ADMIN:
+            - ROLE_PLAYER
+            - ROLE_PLAYER_PREMIUM
+            - ROLE_ALLOWED_TO_SWITCH
+
+    encoders:
+        AppBundle\Entity\User: bcrypt
+
+    providers:
+        players:
+            chain:
+                providers: [ players_by_username, players_by_email_address ]
+        players_by_username:
+            entity: { class: AppBundle:User, property: username }
+        players_by_email_address:
+            entity: { class: AppBundle:User, property: emailAddress }
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        app:
+            pattern: ^/
+            provider: players
+            anonymous: ~
+            switch_user: ~
+            form_login:
+                login_path: app_login
+                check_path: app_login_check
+                username_parameter: my_login
+                password_parameter: my_secret
+                default_target_path: app_game_play
+                always_use_default_target_path: true
+            logout:
+                path: app_logout
+                target: app_login
+
+    access_control:
+        - { path: ^/game, roles: ROLE_PLAYER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

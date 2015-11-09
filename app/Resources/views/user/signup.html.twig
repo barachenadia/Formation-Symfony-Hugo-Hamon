@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% trans_default_domain 'user' %}
+
+{% form_theme form _self %}
+
+{%- block _app_registration_username_widget -%}
+    {%- set type = type|default('text') -%}
+    {{ block('form_widget_simple') }}
+    <img src="{{ asset('images/user-group-16.png') }}" alt=""/>
+{%- endblock _app_registration_username_widget -%}
+
+{% block title 'signup.title'|trans %}
+
+{% block subtitle 'signup.subtitle'|trans %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div>
+            <button type="submit">
+                {{- 'signup.form.subit'|trans -}}
+            </button>
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

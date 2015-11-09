@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="faa5df5d60e4c66d80daa4f75b585f15" resname="menu.play">
+        <source>menu.play</source>
+        <target>Jouer</target>
+        <note from="hugo">
+          Il faut traduire dans le contexte d'un jeu !
+        </note>
+        <note from="traducteur">
+          J'ai bien pris en compte...
+        </note>
+      </trans-unit>
+      <trans-unit id="433158fd0cbcc200da8a7466a393ce3a" resname="menu.signup">
+        <source>menu.signup</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="d7782189f7f2519f2ddc969f3a4ade94" resname="menu.login">
+        <source>menu.login</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="9fd59920b1e1f67f4620dd4d6ab7c5b3" resname="menu.contact">
+        <source>menu.contact</source>
+        <target>Contactez-nous</target>
+      </trans-unit>
+      <trans-unit id="a41ce6490272595520c7a2640528cc08" resname="sidebar.last_games">
+        <source>sidebar.last_games</source>
+        <target>Dernières Parties</target>
+      </trans-unit>
+      <trans-unit id="f32428427dd73eff6dfaf3c98ac27590" resname="sidebar.last_players">
+        <source>sidebar.last_players</source>
+        <target>Derniers Joueurs</target>
+      </trans-unit>
+      <trans-unit id="797a9670e2732097498906b9e515da2d" resname="menu.logout">
+        <source>menu.logout</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

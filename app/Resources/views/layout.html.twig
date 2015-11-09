@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title 'Hangman' %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+        <div id="logo">
+            <h1>
+                <a href="/">Hangman</a>
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                {% if app.user and is_granted('ROLE_PLAYER') %}
+                    <li class="first current_page_item">
+                        <a href="{{ path('app_game_play') }}">
+                            {{- 'menu.play'|trans -}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_logout') }}">
+                            {{- 'menu.logout'|trans -}}
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('app_signup') }}">
+                            {{- 'menu.signup'|trans -}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_login') }}">
+                            {{- 'menu.login'|trans -}}
+                        </a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{{ path('app_contact') }}">
+                        {{- 'menu.contact'|trans -}}
+                    </a>
+                </li>
+            </ul>
+            <br class="clearfix" />
+        </div>
+    </div>
+
+    <div id="page">
+        <div id="content">
+            <h2>{% block subtitle %}{% endblock %}</h2>
+            {% block body %}{% endblock %}
+        </div>
+        <div id="sidebar">
+            <h3>{{ 'sidebar.last_games'|trans }}</h3>
+            <div class="date-list">
+                <ul class="list date-list">
+
+                    <li class="first"><span class="date">Jan 13</span> <a href="#">Ultrices quisque molestie</a></li>
+                    <li><span class="date">Jan 7</span> <a href="#">Neque dolor eget</a></li>
+                    <li><span class="date">Jan 1</span> <a href="#">Sollicitudin interdum</a></li>
+                    <li class="last"><span class="date">Dec 26</span> <a href="#">Varius dignissim</a></li>
+
+                </ul>
+            </div>
+            
+            {{ render_esi(controller('AppBundle:User:sidebar')) }}
+            
+        </div>
+        <br class="clearfix" />
+    </div>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>
