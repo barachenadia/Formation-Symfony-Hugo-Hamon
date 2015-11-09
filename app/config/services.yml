@@ -1,4 +1,10 @@
 services:
+    app.credits_balance_debitor:
+        class: AppBundle\User\CreditsBalanceDebitor
+        arguments: [ '@security.token_storage', '@doctrine.orm.entity_manager' ]
+        tags:
+            - { name: kernel.event_subscriber }
+
     app.language_detector:
         class: AppBundle\Http\AcceptLanguageDetector
         tags:

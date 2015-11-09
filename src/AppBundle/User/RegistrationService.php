@@ -30,6 +30,10 @@ class RegistrationService
         $user->setSalt(sha1($this->saltGenerator->nextBytes(128)));
         $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
 
+        if (!$user->getCreditsBalance()) {
+            $user->credit(500);
+        }
+
         $this->entityManager->persist($user);
 
         if ($flush) {

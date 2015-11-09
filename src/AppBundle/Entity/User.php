@@ -84,6 +84,32 @@ class User implements UserInterface
     private $permissions;
 
     /**
+     * @ORM\Column(type="integer", options={ "unsigned"=true, "default"=0 })
+     */
+    private $creditsBalance;
+
+    public function getCreditsBalance()
+    {
+        return $this->creditsBalance;
+    }
+
+    public function credit($numberOfCredits)
+    {
+        $this->creditsBalance += (int) $numberOfCredits;
+    }
+
+    public function debit($numberOfCredits)
+    {
+        $numberOfCredits = abs($numberOfCredits);
+
+        if ($this->creditsBalance < $numberOfCredits) {
+            throw new \RuntimeException('Not enough credit funds!');
+        }
+
+        $this->creditsBalance -= (int) $numberOfCredits;
+    }
+
+    /**
      * @Assert\Callback
      */
     public function checkPlainPassword(ExecutionContextInterface $context)
