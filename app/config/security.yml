@@ -12,16 +12,11 @@ security:
 
     providers:
         players:
-            chain:
-                providers: [ players_by_username, players_by_email_address ]
-        players_by_username:
-            entity: { class: AppBundle:User, property: username }
-        players_by_email_address:
-            entity: { class: AppBundle:User, property: emailAddress }
+            entity: { class: AppBundle:User }
 
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|images|js|pdf)/
             security: false
 
         app:
@@ -43,3 +38,4 @@ security:
     access_control:
         - { path: ^/game, roles: ROLE_PLAYER }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
