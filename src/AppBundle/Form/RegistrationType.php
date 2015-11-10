@@ -22,6 +22,16 @@ class RegistrationType extends AbstractType
                 'invalid_message' => 'user.passwords.mismatch',
             ])
             ->add('birthdate', 'birthday')
+            ->add('phoneNumber', 'app_phone_number', [
+                'first_name' => 'foo',
+                'second_name' => 'bar',
+                'first_options' => [
+                    'label' => 'Foo1',
+                ],
+                'second_options' => [
+                    'label' => 'Bar2',
+                ]
+            ])
             ->add('rules', 'checkbox', [
                 'mapped' => false,
                 'label' => 'Accept terms and conditions',
@@ -33,7 +43,8 @@ class RegistrationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'validation_groups' => [ 'Default', 'Signup' ]
+            'validation_groups' => [ 'Default', 'Signup' ],
+            'foo' =>  'bar',
         ]);
     }
 

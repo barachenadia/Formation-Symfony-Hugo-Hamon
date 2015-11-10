@@ -88,6 +88,23 @@ class User implements UserInterface
      */
     private $creditsBalance;
 
+    /**
+     * @ORM\Column
+     *
+     * +33/1234567
+     */
+    private $phoneNumber;
+
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
     public function getCreditsBalance()
     {
         return $this->creditsBalance;

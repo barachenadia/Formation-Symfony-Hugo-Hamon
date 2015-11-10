@@ -4,6 +4,11 @@ services:
         tags:
             - { name: form.type, alias: app_registration }
 
+    app.form.phone_number:
+        class: AppBundle\Form\PhoneNumberType
+        tags:
+            - { name: form.type, alias: app_phone_number }
+
     app.super_admin_voter:
         class: AppBundle\Security\SuperAdminVoter
         public: false
