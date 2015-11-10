@@ -6,12 +6,25 @@ use AppBundle\Entity\User;
 use AppBundle\Form\RegistrationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
+    /**
+     * @Route("/profile/{username}", name="app_view_profile")
+     * @Method("GET")
+     * @Security("is_granted('VIEW_PROFILE', profile)")
+     */
+    public function viewProfileAction(User $profile)
+    {
+        var_dump($profile);
+        die;
+    }
+
     /**
      * This action handles the registration workflow.
      *

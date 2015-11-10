@@ -219,6 +219,16 @@ class User implements UserInterface
         }
     }
 
+    public function hasFriendshipRelationshipWith(User $friend)
+    {
+        return false;
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->hasPermission('ROLE_ADMIN');
+    }
+
     public function getRoles()
     {
         $roles = [];

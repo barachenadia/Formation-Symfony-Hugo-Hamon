@@ -36,6 +36,6 @@ security:
                 target: app_login
 
     access_control:
-        - { path: ^/game, roles: ROLE_PLAYER }
+        - { path: ^/(?:game|profile), roles: ROLE_PLAYER }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 

@@ -1,4 +1,16 @@
 services:
+    app.super_admin_voter:
+        class: AppBundle\Security\SuperAdminVoter
+        public: false
+        tags:
+            - { name: security.voter, priority: -1000 }
+
+    app.view_profile_voter:
+        class: AppBundle\Security\ViewProfileVoter
+        public: false
+        tags:
+            - { name: security.voter }
+
     app.credits_balance_debitor:
         class: AppBundle\User\CreditsBalanceDebitor
         arguments: [ '@security.token_storage', '@doctrine.orm.entity_manager' ]
