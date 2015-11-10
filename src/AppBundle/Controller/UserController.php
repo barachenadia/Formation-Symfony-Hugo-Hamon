@@ -3,10 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
-use AppBundle\Form\RegistrationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,7 +34,7 @@ class UserController extends Controller
     public function signupAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm(new RegistrationType(), $user);
+        $form = $this->createForm('app_registration', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

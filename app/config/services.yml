@@ -1,4 +1,9 @@
 services:
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_registration }
+
     app.super_admin_voter:
         class: AppBundle\Security\SuperAdminVoter
         public: false
