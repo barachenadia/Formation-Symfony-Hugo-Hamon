@@ -1,4 +1,10 @@
 services:
+    app.form_extension.authorization:
+        class: AppBundle\Form\Extension\AuthorizationTypeExtension
+        arguments: [ '@security.authorization_checker' ]
+        tags:
+            - { name: form.type_extension, alias: form }
+
     app.form.registration:
         class: AppBundle\Form\RegistrationType
         tags:

@@ -21,7 +21,9 @@ class RegistrationType extends AbstractType
                 'second_name' => 'confirmation',
                 'invalid_message' => 'user.passwords.mismatch',
             ])
-            ->add('birthdate', 'birthday')
+            ->add('birthdate', 'birthday', [
+                'role' => 'ROLE_ADMIN',
+            ])
             ->add('phoneNumber', 'app_phone_number', [
                 'first_name' => 'foo',
                 'second_name' => 'bar',
