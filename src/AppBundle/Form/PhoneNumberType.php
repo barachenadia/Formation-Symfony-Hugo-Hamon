@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PhoneNumberType extends AbstractType
@@ -30,6 +32,15 @@ class PhoneNumberType extends AbstractType
         ;
     }
 
+    public function buildView(FormView $view, FormInterface $form, array $options)
+    {
+        $view->vars['widget'] = $options['widget'];
+        $view->vars['leading_sign'] = $options['leading_sign'];
+        $view->vars['separator_sign'] = $options['separator_sign'];
+        $view->vars['first_name'] = $options['first_name'];
+        $view->vars['second_name'] = $options['second_name'];
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         switch ($options['widget']) {
@@ -51,6 +62,8 @@ class PhoneNumberType extends AbstractType
             'first_options' => [],
             'second_name' => 'dialnumber',
             'second_options' => [],
+            'leading_sign' => '+',
+            'separator_sign' => '/',
         ]);
         
         $resolver->addAllowedValues('widget', [ 'single_text', 'dual_text', 'choice_text' ]);

@@ -25,6 +25,8 @@ class RegistrationType extends AbstractType
             ->add('phoneNumber', 'app_phone_number', [
                 'first_name' => 'foo',
                 'second_name' => 'bar',
+                'leading_sign' => '',
+                'separator_sign' => '-',
                 'first_options' => [
                     'label' => 'Foo1',
                 ],

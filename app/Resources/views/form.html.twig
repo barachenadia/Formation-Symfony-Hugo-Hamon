@@ -1,5 +1,25 @@
 {%- block password_widget -%}
+{% spaceless %}
     {%- set type = type|default('password') -%}
     {{ block('form_widget_simple') }}
     <img src="{{ asset('images/lock_16x16.gif') }}" alt=""/>
+{% endspaceless %}
 {%- endblock password_widget -%}
+
+{%- block app_phone_number_widget -%}
+{% spaceless %}
+    {% set widget = widget|default('choice_text') %}
+    {% if 'dual_text' == widget %}
+        {{ block('app_phone_number_dual_text_widget') }}
+    {% endif %}
+{% endspaceless %}
+{%- endblock app_phone_number_widget -%}
+
+{%- block app_phone_number_dual_text_widget -%}
+{% spaceless %}
+    {{ leading_sign }}
+    {{ form_widget(form[first_name]) }}
+    {{ separator_sign }}
+    {{ form_widget(form[second_name]) }}
+{% endspaceless %}
+{%- endblock app_phone_number_dual_text_widget -%}
